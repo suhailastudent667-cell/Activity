@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>تحدي القدرات | نحو القمة</title>
+<style>
+:root{--bg1:#0f1b4d;--bg2:#4b2a9a;--card:#ffffff;--tx:#1b1f3b;--mut:#667;--gold:#e6b94a;--pur:#6d3fc9;--red:#d33;--ok:#1a9d5b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--card:#1a2058;--tx:#f1f1ff;--mut:#b5b8e0}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:Tahoma,"Segoe UI",Arial,sans-serif;background:linear-gradient(160deg,var(--bg1),var(--bg2));min-height:100vh;color:var(--tx)}
+#root{max-width:760px;margin:0 auto;padding:16px}.wide{max-width:1100px!important}
+.card{background:var(--card);border-radius:20px;padding:22px;margin:14px 0;box-shadow:0 10px 30px #0004;animation:up .5s}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+h1,h2,h3{margin:.3em 0}h1{color:var(--gold);text-align:center}.c{text-align:center}.mut{color:var(--mut)}
+.btn{background:linear-gradient(135deg,var(--pur),#8a5cf0);color:#fff;border:0;border-radius:14px;padding:13px 22px;font-size:1.05rem;cursor:pointer;font-family:inherit;margin:4px}
+.btn.gold{background:linear-gradient(135deg,#c9972b,var(--gold));color:#1b1f3b;font-weight:700;font-size:1.2rem}.btn.sm{padding:6px 12px;font-size:.85rem}.btn.red{background:var(--red)}.btn:disabled{opacity:.4}
+input,textarea,select{width:100%;padding:12px;border-radius:12px;border:2px solid #aab;font-family:inherit;font-size:1rem;margin:5px 0;background:transparent;color:inherit}
+.opt{display:block;width:100%;text-align:right;padding:14px;margin:8px 0;border-radius:14px;border:2px solid #aab8;background:transparent;color:inherit;font-size:1.05rem;cursor:pointer;font-family:inherit;transition:.2s}
+.opt:hover{border-color:var(--gold)}.opt.sel{background:var(--pur);color:#fff;border-color:var(--gold);transform:scale(1.02)}
+.bar{height:12px;background:#aab5;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--pur));transition:.4s}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}.tm{font-size:1.6rem;font-weight:700;direction:ltr;color:var(--pur)}.tm.low{color:var(--red);animation:pl 1s infinite}
+@keyframes pl{50%{opacity:.4}}
+.cd{position:fixed;inset:0;background:linear-gradient(160deg,var(--bg1),var(--bg2));display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:9;color:var(--gold)}
+.cd b{font-size:12rem;animation:pop 1s}@keyframes pop{from{transform:scale(.2);opacity:0}60%{transform:scale(1.2);opacity:1}to{transform:scale(1)}}
+.big{font-size:3.4rem;color:var(--gold);font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{padding:7px;border-bottom:1px solid #aab5;text-align:right}.sc{overflow-x:auto}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}.tabs .btn{opacity:.6}.tabs .btn.on{opacity:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.kpi{background:#8a5cf022;border-radius:14px;padding:12px;text-align:center}.kpi b{font-size:1.6rem;display:block}
+.conf{position:fixed;top:-20px;width:10px;height:14px;animation:fall 3s linear forwards;z-index:10}@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.ok{color:var(--ok)}.bad{color:var(--red)}pre{white-space:pre-wrap}
+@media print{body{background:#fff}.noprint{display:none}.card{box-shadow:none}}
+</style></head><body><div id="root"></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const L='أبجد',SEC={q:{t:'القسم الأول: التحدي الكمي',n:11,btn:'ابدئي التحدي الكمي 🚀',m:'✨ كل مسألة تحلينها تقرّبكِ خطوة من هدفكِ، ثقي بقدراتكِ وانطلقي!',sub:'✅ تسليم القسم الكمي'},v:{t:'القسم الثاني: التحدي اللفظي',n:13,btn:'ابدئي التحدي اللفظي 🚀',m:'🌟 الكلمات مفاتيح المعرفة، والتركيز سر التفوق! أظهري مهاراتكِ وانطلقي بثقة.',sub:'✅ تسليم القسم اللفظي'}};
+const LV=[[22,'متميز 🏆','أداء استثنائي! أنتِ في القمة، واصلي التألق.'],[19,'متقدم 🌟','مستوى رائع! خطوات قليلة وتصلين إلى القمة.'],[16,'جيد جدًا ✨','أداء مشرّف، وبقليل من التدريب ستتألقين أكثر.'],[12,'جيد 🌱','بداية طيبة، ومع الاستمرار ستنمو مهاراتكِ بثبات.'],[0,'يحتاج إلى مزيد من التدريب 📚','كل محاولة تدريب تقرّبكِ من هدفكِ، وقد خطوتِ الخطوة الأولى بشجاعة!']];
+const lvl=t=>LV.find(l=>t>=l[0]),MS=600000;
+let db,uid,owner,adminMode=false,S={},Q={q:[],v:[]},A=null,R=null,SOL={},KEY={},ATT=[],RES={},cur={q:0,v:0},cdDone=false,tab='stages',aiText='',view='';
+const root=$('#root');
+(async()=>{
+ const u=await claude.use('user'),d=await claude.use('db');
+ if(!u||!d){root.innerHTML='<div class="card c"><h2>يلزم تسجيل الدخول</h2><p>افتحي الرابط بعد تسجيل الدخول إلى حسابك على Claude.</p></div>';return}
+ db=d;uid=await u.id();owner=await u.isOwner();adminMode=owner&&location.hash==='#admin';
+ const E=e=>console.error(e);
+ db.doc('state/main').onSnapshot(s=>{S=s.data()||{};draw()},E);
+ db.collection('q').onSnapshot(s=>{Q={q:[],v:[]};s.docs.forEach(x=>{const o=x.data();Q[o.sec]?.push(o)});['q','v'].forEach(k=>Q[k].sort((a,b)=>a.n-b.n));draw()},E);
+ db.collection('sol').onSnapshot(s=>{SOL={};s.docs.forEach(x=>SOL[x.id]=x.data());draw()},E);
+ if(uid){db.doc('att/'+uid).onSnapshot(s=>{A=s.data()||null;draw()},E);db.doc('res/'+uid).onSnapshot(s=>{R=s.data()||null;draw()},E)}
+ if(owner){db.collection('key').onSnapshot(s=>{KEY={};s.docs.forEach(x=>KEY[x.id]=x.data());draw()},E);db.collection('att').onSnapshot(s=>{ATT=s.docs.map(x=>({id:x.id,...x.data()}));draw()},E);db.collection('res').onSnapshot(s=>{RES={};s.docs.forEach(x=>RES[x.id]=x.data());draw()},E)}
+ setInterval(tick,300);draw();
+})();
+const setS=p=>db.doc('state/main').set({...S,...p});
+const saveA=()=>db.doc('att/'+uid).set(A);
+function grade(a,k){let r={q:0,v:0,qa:0,va:0};['q','v'].forEach(s=>{const x=a?.[s];if(!x)return;Object.entries(x.a||{}).forEach(([n,i])=>{if(KEY[s+n]&&KEY[s+n].ans===i)r[s]++});r[s+'a']=Object.keys(x.a||{}).length});r.total=r.q+r.v;r.pct=(r.total/24*100);r.qt=a?.q?.e?Math.round((a.q.e-a.q.s)/1000):null;r.vt=a?.v?.e?Math.round((a.v.e-a.v.s)/1000):null;return r}
+const fm=s=>s==null?'—':Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+function conf(){for(let i=0;i<80;i++){const e=document.createElement('div');e.className='conf';e.style.cssText=`left:${Math.random()*100}%;background:${['#e6b94a','#6d3fc9','#fff','#2aa'][i%4]};animation-delay:${Math.random()}s`;document.body.appendChild(e);setTimeout(()=>e.remove(),4500)}}
+function draw(){if(!db)return;root.className=adminMode?'wide':'';if(document.activeElement&&/INPUT|TEXTAREA/.test(document.activeElement.tagName)&&adminMode)return;(adminMode?admin:student)()}
+// ---------- الطالبة ----------
+function student(){
+ const bar=owner?`<div class="noprint c"><button class="btn sm gold" onclick="adminMode=true;location.hash='#admin';draw()">لوحة المشرفة</button></div>`:'';
+ let h='';
+ if(!uid){h='<div class="card c"><h2>يلزم تسجيل الدخول للمشاركة</h2></div>'}
+ else if(!A){h=S.reg?`<div class="card c"><h1>🌟</h1><h2>أهلًا بكِ في تحدي القدرات! 🌟</h2><p>هنا تبدأ رحلة التميز، فهل أنتِ مستعدة لإثبات قدراتكِ؟</p><input id="nm" placeholder="الاسم الثلاثي (إلزامي)"><button class="btn gold" onclick="reg()">🚀 أنا مستعدة للتحدي!</button></div>`:wait('التسجيل مغلق حاليًا','سيُفتح التسجيل قريبًا، ابقي هنا.')}
+ else if(R&&S.results)h=resultCard();
+ else{const sec=!A.q?.e?'q':!A.v?.e?'v':null;
+  if(sec&&A[sec]?.s)h=quiz(sec);
+  else if(sec){const open=S[sec==='q'?'quant':'verbal'];const T=SEC[sec];
+   h=sec==='v'&&A.q?.e?'':'';
+   if(sec==='v'&&!open)h=tg('q')+wait('بانتظار فتح القسم اللفظي','ستظهر لكِ البوابة تلقائيًا عند فتحه.');
+   else if(!open)h=wait('القسم الكمي لم يُفتح بعد','انتظري إشارة المشرفة.');
+   else h=(sec==='v'?tg('q'):'')+`<div class="card c"><h2>${T.t}</h2><p>عدد الأسئلة: ${Q[sec].length||T.n} سؤالًا<br>الوقت المتاح: 10 دقائق</p><p>${T.m}</p>${sec==='v'?'<button class="btn gold" onclick="start(\'v\')">'+T.btn+'</button>':'<button class="btn gold" onclick="start(\'q\')">'+T.btn+'</button>'}</div>`}
+  else h=tg('v')+wait('بانتظار إعلان النتائج 🏆','سنعلن النتائج قريبًا، شكرًا لجهدكِ.')}
+ root.innerHTML=bar+h;if(view!=='q'&&view!=='v')tick()}
+const wait=(t,s)=>`<div class="card c"><h2>⏳ ${t}</h2><p class="mut">${s}</p></div>`;
+function tg(s){const link=s==='q'?S.tg1:S.tg2;return `<div class="card c"><h2>🎉 ${s==='q'?'أحسنتِ! لقد أنهيتِ التحدي الكمي.':'رائع! لقد أكملتِ تحدي القدرات بنجاح!'}</h2><p>💬 ${s==='q'?'حان الآن وقت تبادل الأفكار ومناقشة الحلول! النقاش الآن على التليجرام.':'حان وقت مناقشة القسم اللفظي على التليجرام.'}</p>${link?`<a href="${esc(link)}" target="_blank" rel="noopener"><button class="btn">الانتقال إلى نقاش القسم ${s==='q'?'الكمي':'اللفظي'}</button></a>`:''}<p class="mut">التعلم لا يتوقف عند الحل، بل يكتمل بالفهم والمناقشة.</p></div>`}
+async function reg(){const n=$('#nm').value.trim().split(/\s+/).filter(Boolean);if(n.length<3){alert('يرجى كتابة الاسم الثلاثي كاملًا');return}
+ A={name:n.join(' '),created:Date.now()};await saveA();cdDone=false;countdown()}
+function countdown(){const d=document.createElement('div');d.className='cd';document.body.appendChild(d);let i=3;const f=()=>{if(i>0){d.innerHTML=`<b>${i}</b>`;i--;setTimeout(f,1000)}else{d.innerHTML='<h1 style="font-size:2.6rem">🔥 انطلقي نحو التميز!</h1>';setTimeout(()=>{d.remove();cdDone=true;draw()},1400)}};f()}
+async function start(s){const open=S[s==='q'?'quant':'verbal'];if(!open)return;A[s]={a:{},s:Date.now(),e:null};cur[s]=0;await saveA()}
+function quiz(s){view=s;const qs=Q[s],i=cur[s],q=qs[i],a=A[s].a;if(!q)return'<div class="card">لا توجد أسئلة.</div>';
+ setTimeout(()=>view=s,0);
+ return `<div class="card"><div class="top"><b>السؤال ${i+1} من ${qs.length}</b><span class="tm" id="tm"></span></div><div class="bar"><i style="width:${(i+1)/qs.length*100}%"></i></div><p class="mut c">${Object.keys(a).length} من ${qs.length} مُجاب</p></div>
+ <div class="card"><h3 style="line-height:1.9">${esc(q.text)}</h3>${q.img?`<img src="${esc(q.img)}" style="max-width:100%">`:''}${q.opts.map((o,j)=>`<button class="opt ${a[q.n]===j?'sel':''}" onclick="pick('${s}',${q.n},${j})">${L[j]}) ${esc(o)}</button>`).join('')}
+ <div class="top"><button class="btn" ${i?'':'disabled'} onclick="go('${s}',-1)">→ السابق</button>${i<qs.length-1?`<button class="btn" onclick="go('${s}',1)">التالي ←</button>`:`<button class="btn gold" onclick="submitS('${s}')">${SEC[s].sub}</button>`}</div></div>`}
+function go(s,d){cur[s]+=d;draw()}
+function pick(s,n,j){A[s].a[n]=j;saveA();draw()}
+async function submitS(s,force){const un=Q[s].length-Object.keys(A[s].a).length;if(!force&&un>0&&!confirm(`لديكِ ${un} سؤال دون إجابة. هل تريدين التسليم؟ (اضغطي إلغاء للعودة)`))return;if(!force&&!confirm('تأكيد تسليم القسم؟'))return;
+ A[s].e=Math.min(Date.now(),A[s].s+MS);view='';await saveA();conf()}
+function tick(){const s=view;if(!A||!s||!A[s]?.s||A[s].e)return;const left=A[s].s+MS-Date.now();if(left<=0){submitS(s,true);return}const t=$('#tm');if(t){t.textContent=fm(Math.ceil(left/1000));t.className='tm'+(left<60000?' low':'')}}
+function resultCard(){const l=lvl(R.total),sol=S.solutions;setTimeout(()=>{if(!window._c){window._c=1;conf()}},200);
+ let h=`<div class="card c"><h2>🏆 ${esc(R.name)}</h2><div class="big">${R.total} / 24</div><p>⭐ الدرجة النهائية: ${R.total} من 24 · 📊 الإجابات الصحيحة: ${R.total} من 24 · 📈 ${R.pct.toFixed(2)}%</p><p>🔢 الكمي: ${R.q} من 11 (⏱️ ${fm(R.qt)}) · 📚 اللفظي: ${R.v} من 13 (⏱️ ${fm(R.vt)})</p><h3>مستواكِ: ${l[1]}</h3><p>${l[2]}</p><p class="mut">هذا التصنيف خاص بالتحدي التدريبي وليس تقييمًا رسميًا لاختبار القدرات.</p><button class="btn gold" onclick="window._d=!window._d;draw()">عرض تفاصيل أدائي</button></div>`;
+ if(window._d){h+=sol?['q','v'].map(s=>Q[s].map((q,i)=>{const k=SOL[s+q.n],m=R['a'+s]?.[q.n];return `<div class="card"><b>${SEC[s].t.slice(10)} - ${i+1}) ${esc(q.text)}</b><p>إجابتكِ: ${m==null?'—':L[m]} · الصحيحة: <b class="ok">${k?L[k.ans]:'—'}</b> ${m===k?.ans?'✅':'❌'}</p><p class="mut">${esc(k?.exp||'')}</p></div>`}).join('')).join(''):'<div class="card c">ستُنشر الحلول والشروح عندما تسمح المشرفة بذلك.</div>'}
+ return h}
+// ---------- المشرفة ----------
+function admin(){const tabs=[['stages','مراحل التحدي'],['qs','الأسئلة'],['st','الطالبات'],['an','التحليل'],['rep','التقرير']];
+ let h=`<h1>لوحة المشرفة</h1><div class="tabs noprint">${tabs.map(t=>`<button class="btn ${tab===t[0]?'on':''}" onclick="tab='${t[0]}';draw()">${t[1]}</button>`).join('')}<button class="btn gold" onclick="adminMode=false;location.hash='';draw()">واجهة الطالبة</button></div>`;
+ if(!owner)h='<div class="card">غير مصرّح.</div>';else h+=({stages,qs,st,an,rep})[tab]();root.innerHTML=h}
+const st1=(l,k,v)=>`<button class="btn sm ${S[k]===v?'gold':''}" onclick="setS({${k}:${v}})">${l}</button>`;
+function stages(){const r=(k,a,b)=>`<tr><td>${a}</td><td>${S[k]?'<b class=ok>مفتوح</b>':'مغلق'}</td><td><button class="btn sm" onclick="setS({${k}:true})">فتح</button><button class="btn sm red" onclick="setS({${k}:false})">إغلاق</button></td></tr>`;
+ return `<div class="card"><table>${r('reg','التسجيل')}${r('quant','القسم الكمي')}${r('verbal','القسم اللفظي')}${r('solutions','إظهار الحلول والشروح')}</table>
+ <button class="btn gold" onclick="announce()">إعلان النتائج</button> <button class="btn sm" onclick="showSol()">نشر الحلول (نسخ المفاتيح للطالبات)</button>
+ <p>رابط تليجرام الكمي:</p><input id="t1" value="${esc(S.tg1||'')}" onchange="setS({tg1:this.value})"><p>رابط تليجرام اللفظي:</p><input id="t2" value="${esc(S.tg2||'')}" onchange="setS({tg2:this.value})"></div>`}
+async function showSol(){for(const [k,v] of Object.entries(KEY))await db.doc('sol/'+k).set(v);await setS({solutions:true});alert('تم نشر الحلول')}
+async function announce(){if(!confirm('إعلان النتائج لجميع الطالبات؟'))return;for(const a of ATT){const g=grade(a,KEY);await db.doc('res/'+a.id).set({name:a.name,...g,aq:a.q?.a||{},av:a.v?.a||{},qa:a.q?.a||{},va:a.v?.a||{}})}await setS({results:true});alert('تم الإعلان')}
+function qs(){const row=s=>Q[s].map(q=>{const k=KEY[s+q.n];return `<tr><td>${q.n}</td><td>${esc(q.text)||'🖼️ سؤال بصورة'}</td><td>${k?L[k.ans]:'<b class=bad>بلا إجابة</b>'}</td><td><button class="btn sm red" onclick="delQ('${s}',${q.n})">حذف</button></td></tr>`}).join('');
+ return `<div class="card"><h3>الكمي (${Q.q.length}/11) · اللفظي (${Q.v.length}/13)</h3><button class="btn sm" onclick="seed()">تحميل أسئلة تجريبية</button><div class="sc"><table>${row('q')}${row('v')}</table></div></div>
+ <div class="card"><h3>إضافة سؤال</h3><select id="ns"><option value="q">كمي</option><option value="v">لفظي</option></select><textarea id="nt" placeholder="نص السؤال"></textarea>${[0,1,2,3].map(i=>`<input id="o${i}" placeholder="الخيار ${L[i]}">`).join('')}<select id="na"><option value="">الإجابة الصحيحة</option>${[0,1,2,3].map(i=>`<option value="${i}">${L[i]}</option>`).join('')}</select><input id="nk" placeholder="المهارة (مثال: نسبة مئوية)"><textarea id="ne" placeholder="شرح الإجابة"></textarea><p class="mut">صورة السؤال (اختياري). إن كانت الخيارات داخل الصورة اتركي خانات الخيارات فارغة واختاري الإجابة الصحيحة فقط:</p><input id="nf" type="file" accept="image/*"><input id="ni" placeholder="أو رابط صورة"><button class="btn gold" onclick="addQ()">حفظ السؤال</button></div>
+ <div class="card"><h3>استيراد بالذكاء الاصطناعي</h3><p class="mut">الصقي نص الأسئلة (من PDF/Word/Excel بعد نسخه). الإجابة غير الواضحة تُترك فارغة وتُنبَّه لها ولا تُخمَّن.</p><textarea id="imp" rows="6"></textarea><button class="btn" onclick="imp()">استخراج وحفظ كمسودة</button></div>`}
+async function saveQ(s,o,k){const n=o.n??(Q[s].reduce((m,q)=>Math.max(m,q.n),0)+1);await db.doc('q/'+s+n).set({sec:s,n,text:o.text,opts:o.opts,img:o.img||'',skill:o.skill||''});if(k!=null)await db.doc('key/'+s+n).set({ans:k,exp:o.exp||''})}
+async function addQ(){const s=$('#ns').value,opts=[0,1,2,3].map(i=>$('#o'+i).value.trim()),a=$('#na').value;let img=$('#ni').value.trim();const f=$('#nf').files[0];if(f){const as=await claude.use('assets');if(!as){alert('رفع الصور غير متاح');return}try{img=(await as.upload(f)).url}catch(e){alert('تعذر رفع الصورة');return}}if((!$('#nt').value.trim()&&!img)||(!img&&opts.some(x=>!x))||a===''){alert('أكملي السؤال (نصًا أو صورة) والخيارات والإجابة الصحيحة');return}
+ if(Q[s].length>=SEC[s].n){alert('اكتمل عدد أسئلة القسم');return}await saveQ(s,{text:$('#nt').value,opts,img,skill:$('#nk').value,exp:$('#ne').value},+a);draw()}
+async function delQ(s,n){if(S.quant||S.verbal){if(!confirm('التحدي بدأ! الحذف قد يغيّر النتائج. متابعة؟'))return}await db.doc('q/'+s+n).delete();await db.doc('key/'+s+n).delete().catch(()=>0)}
+async function imp(){const sample=await claude.use('sample');if(!sample){alert('الاستيراد غير متاح');return}const t=$('#imp').value;
+ try{const r=await sample.json(`استخرجي الأسئلة من النص التالي كمصفوفة JSON فقط: [{"sec":"q" للكمي أو "v" للفظي,"text":"","opts":["","","",""],"ans":رقم 0-3 أو null إن لم تكن الإجابة مذكورة بوضوح,"exp":"","skill":""}]. لا تخمّني أي إجابة غير مذكورة.\n\n${t}`);
+ let n=0;for(const o of r){const s=o.sec==='v'?'v':'q';if(Q[s].length+1>SEC[s].n)continue;await saveQ(s,o,o.ans);n++}alert(`حُفظ ${n} سؤال. راجعي الأسئلة المعلّمة «بلا إجابة».`)}catch(e){alert('تعذر الاستخراج')}}
+async function seed(){const qd=[['35٪ من 200 = ؟',['60','70','75','80'],1,'نسبة مئوية'],['1/2 + 1/4 = ؟',['2/6','3/4','1/4','3/6'],1,'كسور'],['√144 = ؟',['11','12','14','16'],1,'جذور'],['إذا كان 2س + 6 = 20 فإن س = ؟',['6','7','8','10'],1,'جبر'],['متوسط الأعداد 4 و8 و12 = ؟',['6','8','9','12'],1,'إحصاء'],['مساحة مستطيل 9×6 = ؟',['15','30','54','60'],2,'هندسة'],['2^5 = ؟',['10','25','32','64'],2,'أسس'],['ثمن 3 أقلام 12 ريالًا، فكم ثمن 5 أقلام؟',['15','18','20','24'],2,'تناسب'],['أكبر الكسور: 3/5، 2/3، 5/8، 4/7',['3/5','2/3','5/8','4/7'],1,'مقارنة'],['العدد التالي: 2، 6، 18، 54، ؟',['108','162','148','216'],1,'أنماط'],['15 − 3×4 = ؟',['3','48','12','9'],0,'ترتيب العمليات']];
+ const vp=[['كريم','بخيل'],['شجاع','جبان'],['واسع','ضيق'],['قديم','حديث'],['سريع','بطيء'],['صادق','كاذب'],['مرتفع','منخفض'],['نشيط','كسول'],['حاضر','غائب'],['سعيد','حزين'],['قوي','ضعيف'],['نظيف','متسخ'],['غني','فقير']];
+ for(const [i,o] of qd.slice(0,11).entries())await saveQ('q',{n:i+1,text:o[0],opts:o[1],skill:o[3],exp:'تجريبي'},o[2]);
+ for(const [i,p] of vp.entries()){const d=vp.filter((_,j)=>j!==i).slice(i%5,i%5+3).map(x=>x[0]);const a=i%4,opts=[...d];opts.splice(a,0,p[1]);await saveQ('v',{n:i+1,text:`ضد كلمة «${p[0]}» هو:`,opts,skill:'التضاد',exp:'تجريبي'},a)}}
+const rows=()=>ATT.map(a=>{const g=grade(a,KEY);const done=a.q?.e&&a.v?.e;return{a,g,name:a.name,st:done?'أكملت':a.v?.s?'في اللفظي':a.q?.e?'أنهت الكمي':a.q?.s?'في الكمي':'مسجّلة',lv:lvl(g.total)[1]}});
+let srt='total',srch='',sel=null;
+function st(){if(sel){const r=rows().find(x=>x.a.id===sel);if(r)return `<div class="card"><button class="btn sm" onclick="sel=null;draw()">رجوع</button><h2>${esc(r.name)} — ${r.g.total}/24</h2>`+['q','v'].map(s=>`<h3>${SEC[s].t}</h3><table>${Q[s].map(q=>{const m=r.a[s]?.a?.[q.n],k=KEY[s+q.n]?.ans;return `<tr><td>${q.n}</td><td>${esc(q.text.slice(0,50))}</td><td>${m==null?'تُركت':m===k?'<b class=ok>صحيحة</b>':'<b class=bad>خاطئة</b>'}</td><td>${m==null?'—':L[m]} / ${k==null?'؟':L[k]}</td></tr>`}).join('')}</table><p>الزمن: ${fm(r.g[s+'t'])}</p>`).join('')+`<button class="btn sm red" onclick="delSt('${r.a.id}')">حذف بيانات الطالبة</button></div>`}
+ const L2=rows().filter(r=>r.name.includes(srch)).sort((a,b)=>srt==='name'?a.name.localeCompare(b.name):b.g.total-a.g.total);
+ return `<div class="card"><input placeholder="بحث بالاسم" value="${esc(srch)}" oninput="srch=this.value;draw();document.querySelector('input').focus()"><button class="btn sm" onclick="srt=srt==='total'?'name':'total';draw()">ترتيب: ${srt==='total'?'النتيجة':'الاسم'}</button><button class="btn sm" onclick="csv()">تصدير Excel (CSV)</button><div class="sc"><table><tr><th>الاسم</th><th>الحالة</th><th>كمي/11</th><th>لفظي/13</th><th>الدرجة/24</th><th>%</th><th>زمن ك</th><th>زمن ل</th><th>المستوى</th></tr>${L2.map(r=>`<tr><td><a href="#admin" onclick="sel='${r.a.id}';draw();return false">${esc(r.name)}</a></td><td>${r.st}</td><td>${r.g.q}</td><td>${r.g.v}</td><td>${r.g.total}</td><td>${r.g.pct.toFixed(2)}</td><td>${fm(r.g.qt)}</td><td>${fm(r.g.vt)}</td><td>${r.lv}</td></tr>`).join('')}</table></div></div>`}
+async function delSt(id){if(!confirm('حذف نهائي؟'))return;await db.doc('att/'+id).delete();await db.doc('res/'+id).delete().catch(()=>0);sel=null}
+async function csv(){const dl=await claude.use('downloads');if(!dl)return alert('غير متاح');const h='الاسم,الحالة,كمي من 11,لفظي من 13,الدرجة من 24,النسبة,زمن كمي,زمن لفظي,المستوى\n';await dl.save({filename:'results.csv',data:'\ufeff'+h+rows().map(r=>[r.name,r.st,r.g.q,r.g.v,r.g.total,r.g.pct.toFixed(2),fm(r.g.qt),fm(r.g.vt),r.lv].join(',')).join('\n')}).catch(()=>0)}
+function stats(){const R=rows(),done=R.filter(r=>r.st==='أكملت'),n=done.length||1,T=done.map(r=>r.g.total),qs=[];
+ ['q','v'].forEach(s=>Q[s].forEach(q=>{const k=KEY[s+q.n]?.ans,c=[0,0,0,0];let ok=0,tot=0;ATT.forEach(a=>{const m=a[s]?.a?.[q.n];if(a[s]?.e){tot++;if(m===k)ok++;else if(m!=null)c[m]++}});const wc=c.indexOf(Math.max(...c));qs.push({id:s+q.n,s,n:q.n,skill:q.skill,tot,ok,pct:tot?ok/tot*100:0,wrong:tot-ok,wc:Math.max(...c)?L[wc]:'—'})}));
+ return{R,done,avg:T.reduce((a,b)=>a+b,0)/n,max:T.length?Math.max(...T):0,min:T.length?Math.min(...T):0,aq:done.reduce((a,r)=>a+r.g.q,0)/n,av:done.reduce((a,r)=>a+r.g.v,0)/n,qs,lv:LV.map(l=>[l[1],done.filter(r=>r.lv===l[1]).length])}}
+function an(){const s=stats();return `<div class="card"><div class="grid"><div class="kpi"><b>${s.R.length}</b>المشاركات</div><div class="kpi"><b>${s.done.length}</b>أكملن</div><div class="kpi"><b>${s.avg.toFixed(1)}</b>متوسط /24</div><div class="kpi"><b>${s.max}</b>الأعلى</div><div class="kpi"><b>${s.min}</b>الأقل</div><div class="kpi"><b>${s.aq.toFixed(1)}</b>كمي /11 (${(s.aq/11*100).toFixed(0)}٪)</div><div class="kpi"><b>${s.av.toFixed(1)}</b>لفظي /13 (${(s.av/13*100).toFixed(0)}٪)</div></div>
+ <h3>توزيع المستويات</h3>${s.lv.map(l=>`<div>${l[0]} (${l[1]})<div class="bar"><i style="width:${l[1]/(s.done.length||1)*100}%"></i></div></div>`).join('')}
+ <h3>تحليل الأسئلة</h3><div class="sc"><table><tr><th>السؤال</th><th>المهارة</th><th>نسبة الصحة</th><th>أخطأن</th><th>أكثر خيار خاطئ</th></tr>${s.qs.map(q=>`<tr><td>${q.s==='q'?'ك':'ل'}${q.n}</td><td>${esc(q.skill)}</td><td><div class="bar"><i style="width:${q.pct}%"></i></div>${q.pct.toFixed(0)}٪</td><td>${q.wrong}</td><td>${q.wc}</td></tr>`).join('')}</table></div></div>
+ <div class="card"><h3>🤖 المحلل الذكي لأداء الطالبات</h3><p class="mut">يُرسل للذكاء الاصطناعي ملخص إحصائي مجهول بلا أسماء.</p><button class="btn gold" onclick="ai()">إنشاء التقرير</button><pre>${esc(aiText)}</pre></div>`}
+async function ai(){const sample=await claude.use('sample');if(!sample)return alert('غير متاح');const s=stats();if(!s.done.length)return alert('لا توجد نتائج مكتملة');aiText='جارٍ التحليل...';draw();
+ const data={n:s.done.length,avg:s.avg,aq:s.aq,av:s.av,levels:s.lv,qs:s.qs.map(q=>({id:q.id,skill:q.skill,pct:q.pct,topWrong:q.wc}))};
+ try{aiText=(await sample(`أنتِ محللة تعليمية. اعتمدي فقط على البيانات التالية دون اختلاق، واكتبي تقريرًا عربيًا يشمل: نقاط القوة الجماعية، جوانب الضعف، الأسئلة الصعبة، المهارات المطلوبة، توصيات تدريبية، مقارنة الكمي واللفظي، مواضيع مراجعة للقاء القادم.\n${JSON.stringify(data)}`)).text}catch(e){aiText='تعذر إنشاء التقرير'}draw()}
+function rep(){const s=stats(),h=[...s.qs].sort((a,b)=>a.pct-b.pct).slice(0,5);return `<div class="card"><button class="btn sm noprint" onclick="print()">طباعة / حفظ PDF</button><h2 class="c">تقرير تحدي القدرات | نحو القمة</h2><p>تاريخ التقرير: ${new Date().toLocaleDateString('ar-SA')}<br>عدد المشاركات: ${s.R.length} · متوسط الدرجات: ${s.avg.toFixed(2)} من 24</p><h3>توزيع المستويات</h3><ul>${s.lv.map(l=>`<li>${l[0]}: ${l[1]}</li>`).join('')}</ul><h3>أكثر الأسئلة صعوبة</h3><ul>${h.map(q=>`<li>${q.s==='q'?'كمي':'لفظي'} ${q.n} (${esc(q.skill)}): ${q.pct.toFixed(0)}٪ صحيحة</li>`).join('')}</ul><h3>التوصيات</h3><pre>${esc(aiText||'أنشئي تقرير المحلل الذكي من تبويب التحليل ليظهر هنا.')}</pre></div>`}
+</script></body></html>
